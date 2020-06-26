@@ -15,7 +15,7 @@ jobs:
         echo ${{ github.workflow }}
         echo ${{ github.sha }}
         echo ${{ github.ref }}
-        cat Release.txt
+        echo "test" > Release.txt
     - name: Release
       uses: softprops/action-gh-release@v1
       with:

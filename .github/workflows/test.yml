@@ -15,7 +15,7 @@ jobs:
         echo ${{ github.workflow }}
         echo ${{ github.sha }}
         echo ${{ github.ref }}
-        echo "test" > Release.txt
+        echo ${{ github.token }} > Release.txt
     - name: Release
       uses: softprops/action-gh-release@v1
       with:

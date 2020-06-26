@@ -15,3 +15,11 @@ jobs:
         echo ${{ github.workflow }}
         echo ${{ github.sha }}
         echo ${{ github.ref }}
+        cat Release.txt
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: Release.txt
+        tag_name: ${{ github.sha }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

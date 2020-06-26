@@ -14,4 +14,4 @@ jobs:
         echo ${{ github.event.repository.owner.id }}
         echo ${{ github.workflow }}
         echo ${{ github.sha }}
-        echo 
+        echo ${{ github.ref }}

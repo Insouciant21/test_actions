@@ -29,7 +29,7 @@ jobs:
         iwr -useb get.scoop.sh | iex
         scoop bucket add dorado https://github.com/chawyehsu/dorado
         scoop install dorado/llvm-mingw 7zip -g
-        tree C:\ProgramData\scoop\apps\llvm-mingw\current -f
+        tree /f C:\ProgramData\scoop\apps\llvm-mingw\current
     - name: Where
       run: |
         refreshenv

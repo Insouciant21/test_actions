@@ -28,10 +28,10 @@ jobs:
         ##iwr -useb get.scoop.sh | iex
         #scoop install llvm -g 
         choco install llvm 
+        ls "C:\Program Files\LLVM\bin"
+        Update-SessionEnvironment
         
     - name: Where
       run: |
-       refreshenv
-       Update-SessionEnvironment
        where.exe llvm
        where.exe llvm-config

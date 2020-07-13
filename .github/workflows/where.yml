@@ -23,13 +23,22 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Get LLVM source
       run: |
         set-executionpolicy remotesigned -scope currentuser
         iwr -useb get.scoop.sh | iex
-        scoop bucket add dorado https://github.com/chawyehsu/dorado
-        scoop install dorado/llvm-mingw 7zip -g
-        tree /f C:\ProgramData\scoop\apps\llvm-mingw\current
-    - name: Where
+        scoop bucket add extras
+        scoop install git cmake python mingw -g
+        cd llvm
+        git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git llvm
+        mkdir build
+    - name:  Compile LLVM
+      shell: cmd
       run: |
-        refreshenv
+        cd llvm
+        call C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat
+        cd build
+        set CC=cl;
+        set CXX=cl;
+        cmake -GNinja ..\llvm
+        ninja 

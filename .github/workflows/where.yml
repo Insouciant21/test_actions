@@ -33,5 +33,5 @@ jobs:
     - name: Where
       run: |
         refreshenv
-       where.exe llvm
-       where.exe llvm-config
+        where.exe llvm
+        where.exe llvm-config

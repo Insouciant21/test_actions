@@ -28,5 +28,4 @@ jobs:
         
     - name: Where
       run: |
-       where.exe llvm
-        where.exe llvm-config
+       ls C:\Program Files\LLVM\bin

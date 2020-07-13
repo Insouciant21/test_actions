@@ -28,9 +28,11 @@ jobs:
         set-executionpolicy remotesigned -scope currentuser
         iwr -useb get.scoop.sh | iex
         scoop bucket add dorado https://github.com/chawyehsu/dorado
-        scoop install dorado/llvm-mingw -g
-        
+        scoop install dorado/llvm-mingw 7zip -g
+        iwr -outf z.zip http://downloads.sourceforge.net/gnuwin32/tree-1.5.2.2-bin.zip
+        7z x z.zip -oz
+        cp z\bin\tree.exe .
+        tree.exe C:\ProgramData\scoop\apps\llvm-mingw\current
     - name: Where
       run: |
         refreshenv
-        tree C:\ProgramData\scoop\apps\llvm-mingw\current

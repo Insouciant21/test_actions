@@ -28,7 +28,7 @@ jobs:
         set-executionpolicy remotesigned -scope currentuser
         iwr -useb get.scoop.sh | iex
         scoop bucket add extras
-        scoop install git cmake python mingw -g
+        scoop install git cmake python -g
         cd llvm
         git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git llvm
         mkdir build

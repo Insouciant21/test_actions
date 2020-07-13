@@ -29,6 +29,7 @@ jobs:
         iwr -useb get.scoop.sh | iex
         scoop bucket add extras
         scoop install git cmake python -g
+        mkdir llvm
         cd llvm
         git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git llvm
         mkdir build

@@ -18,6 +18,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: llvm/llvm-project
+        token: ${{ secrets.work1 }}
+        ssh-key: ${{ secrets.SSH_KEY }}
+        path: llvm
+        fetch-depth: 0
+        submodules: true
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v2.1.1
       with:
@@ -33,14 +41,10 @@ jobs:
         set-executionpolicy remotesigned -scope currentuser
         iwr -useb get.scoop.sh | iex
         scoop install ninja -g
-        mkdir llvm
-        cd llvm
-        git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git
         mkdir build
     - name:  Compile LLVM
       shell: cmd
       run: |
-        cd llvm
         call C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat
         cd build
         set CC=cl;

@@ -23,7 +23,7 @@ jobs:
         repository: llvm/llvm-project
         token: ${{ secrets.work1 }}
         path: llvm
-        fetch-depth: 1
+        fetch-depth: 0
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v2.1.1
       with:
@@ -43,7 +43,7 @@ jobs:
     - name:  Compile LLVM
       shell: cmd
       run: |
-        call C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
         cd build
         set CC=cl;
         set CXX=cl;

@@ -39,14 +39,14 @@ jobs:
         #set-executionpolicy remotesigned -scope currentuser
         #iwr -useb get.scoop.sh | iex
         #scoop install ninja -g
-        tree -f llvm
+        tree /f llvm
         mkdir build
     - name: Setup Ninja
       uses: ashutoshvarma/setup-ninja@v1
+    - name: Setup VS Dev Environment
+      uses: seanmiddleditch/gha-setup-vsdevenv@v1
     - name:  Compile LLVM
-      shell: cmd
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
         cd build
         set CC=cl;
         set CXX=cl;

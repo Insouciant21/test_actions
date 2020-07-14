@@ -23,6 +23,7 @@ jobs:
         repository: llvm/llvm-project
         token: ${{ secrets.work1 }}
         fetch-depth: 0
+        path: llvm-project
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v2.1.1
       with:

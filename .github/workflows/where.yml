@@ -35,7 +35,7 @@ jobs:
         scoop install ninja -g
         mkdir llvm
         cd llvm
-        git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git llvm
+        git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git
         mkdir build
     - name:  Compile LLVM
       shell: cmd

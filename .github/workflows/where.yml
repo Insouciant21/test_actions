@@ -36,10 +36,13 @@ jobs:
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     - name: Get LLVM source
       run: |
-        set-executionpolicy remotesigned -scope currentuser
-        iwr -useb get.scoop.sh | iex
-        scoop install ninja -g
+        #set-executionpolicy remotesigned -scope currentuser
+        #iwr -useb get.scoop.sh | iex
+        #scoop install ninja -g
+        tree -f llvm
         mkdir build
+    - name: Setup Ninja
+      uses: ashutoshvarma/setup-ninja@v1
     - name:  Compile LLVM
       shell: cmd
       run: |

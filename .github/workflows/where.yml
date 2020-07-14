@@ -22,10 +22,8 @@ jobs:
       with:
         repository: llvm/llvm-project
         token: ${{ secrets.work1 }}
-        ssh-key: ${{ secrets.SSH_KEY }}
         path: llvm
-        fetch-depth: 0
-        submodules: true
+        fetch-depth: 1
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v2.1.1
       with:

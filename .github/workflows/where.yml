@@ -22,7 +22,6 @@ jobs:
       with:
         repository: llvm/llvm-project
         token: ${{ secrets.work1 }}
-        path: llvm
         fetch-depth: 0
     - name: Import GPG
       uses: crazy-max/ghaction-import-gpg@v2.1.1
@@ -39,7 +38,7 @@ jobs:
         #set-executionpolicy remotesigned -scope currentuser
         #iwr -useb get.scoop.sh | iex
         #scoop install ninja -g
-        tree /f llvm
+        cd llvm-project
         mkdir build
     - name: Setup Ninja
       uses: ashutoshvarma/setup-ninja@v1
@@ -47,7 +46,7 @@ jobs:
       uses: seanmiddleditch/gha-setup-vsdevenv@v1
     - name:  Compile LLVM
       run: |
-        cd build
+        cd llvm-project\build
         set CC=cl;
         set CXX=cl;
         cmake -GNinja ..\llvm

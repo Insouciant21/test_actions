@@ -48,7 +48,30 @@ jobs:
     - name:  Compile LLVM
       run: |
         cd llvm-project\build
-        set CC=cl;
-        set CXX=cl;
-        cmake -GNinja ..\llvm
+        cmake  -DCMAKE_BUILD_TYPE=Release -DCMAKE_IGNORE_PATH="C:/ProgramData/chocolatey/bin/;C:/Strawberry/c/bin/" -GNinja ..\llvm
         ninja 
+    - name: archive
+      run: |
+        7z a -t7z bin.7z llvm-project\build\*
+    - name: Upload Windows artifact
+      uses: actions/upload-artifact@v2
+      with:
+        path: bin.7z
+  Upload:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: LLVM
+        name: LLVM
+        files: |
+          artifact/bin.7z
+        body: | 
+          llvm
+      env:
+        GITHUB_TOKEN: ${{ secrets.work1 }}

@@ -24,4 +24,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: where.exe sh
+      run: |
+        where.exe sh
+        rm "C:\Program Files\Git\bin\sh.exe"
+        rm "C:\Program Files\Git\usr\bin\sh.exe"

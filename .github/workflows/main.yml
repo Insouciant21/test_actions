@@ -1,6 +1,6 @@
 name: Qt-test
 on:
-  push:
+  watch:
     types: [started]
 jobs:
   build:

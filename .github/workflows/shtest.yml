@@ -28,3 +28,4 @@ jobs:
         where.exe sh
         rm "C:\Program Files\Git\bin\sh.exe"
         rm "C:\Program Files\Git\usr\bin\sh.exe"
+        where.exe sh

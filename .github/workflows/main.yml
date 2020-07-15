@@ -11,4 +11,5 @@ jobs:
       run: |
         iwr -outf libclang.7z "http://ftp.jaist.ac.jp/pub/qtproject/development_releases/prebuilt/libclang/libclang-release_80-based-windows-mingw_64.7z"
         7z x libclang.7z
+        tree .
         rm libclang.7z

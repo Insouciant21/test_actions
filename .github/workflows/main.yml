@@ -1,7 +1,7 @@
 name: Qt-test
 on:
-  watch:
-    types: [ started ]
+  push:
+    types: [started]
 jobs:
   build:
     runs-on: windows-latest
@@ -9,7 +9,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Download LLVM
       run: |
-        iwr -outf libclang.7z https://download.qt.io/development_releases/prebuilt/libclang/libclang-release_80-based-windows-mingw_64.7z
+        iwr -outf libclang.7z "http://ftp.jaist.ac.jp/pub/qtproject/development_releases/prebuilt/libclang/libclang-release_80-based-windows-mingw_64.7z"
         7z x libclang.7z
         rm libclang.7z
-    

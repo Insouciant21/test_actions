@@ -27,9 +27,9 @@ jobs:
       run: |
         git clone https://github.com/rustyx/fuse-hello.git
         docker build fuse-hello -t hello
-        docker run -it hello
-        docker run -it --device /dev/fuse hello
-        docker run -it --cap-add SYS_ADMIN --device /dev/fuse hello
+        docker run -i hello
+        docker run -i --device /dev/fuse hello
+        docker run -i --cap-add SYS_ADMIN --device /dev/fuse hello
     - name: Start Rclone
       uses: wei/rclone@v1
       env:

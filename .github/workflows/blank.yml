@@ -27,12 +27,12 @@ jobs:
       run: |
         git clone https://github.com/rustyx/fuse-hello.git
         docker build fuse-hello -t hello
-        docker run -i hello
-        docker run -i --device /dev/fuse hello
-        docker run -i --cap-add SYS_ADMIN --device /dev/fuse hello
+        sudo docker run -i hello
+        sudo docker run -i --device /dev/fuse hello
+        sudo docker run -i --cap-add SYS_ADMIN --device /dev/fuse hello
     - name: Start Rclone
       uses: wei/rclone@v1
       env:
-        RCLONE_CONF: ${{ secrets.DROPBOX }}
+        RCLONE_CONF: ${{ secrets.RCONF }}
       with:
         args: mount mount "dropbox:/Jacky Kevin" dropbox
